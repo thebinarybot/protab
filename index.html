@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ProTab ✅</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Hide number input arrows */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      appearance: textfield;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div id="container">
+      <div id="checklist-container"></div>
+      <input type="text" id="new-item" placeholder="Add new item (Press Enter)" autocomplete="off" autofocus>
+      <div class="button-group">
+        <button id="delete-checked">Delete Checked Items</button>
+      </div>
+    </div>
+    <div id="timer-container">
+      <div class="timer-display">00:00:00</div>
+      <div class="timer-controls">
+        <div class="time-inputs-row">
+          <div class="time-input-group">
+            <input type="number" value="" max="23" id="hours">
+            <label>HH</label>
+          </div>
+          <span class="time-separator">:</span>
+          <div class="time-input-group">
+            <input type="number" value="" max="59" id="minutes">
+            <label>MM</label>
+          </div>
+          <span class="time-separator">:</span>
+          <div class="time-input-group">
+            <input type="number" value="" max="59" id="seconds">
+            <label>SS</label>
+          </div>
+        </div>
+        <div class="button-group">
+          <button id="start-timer">Start</button>
+          <button id="reset-timer">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="theme-toggle" style="position: fixed; top: 20px; right: 20px;">☀️</button>
+  <div id="quote-container"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "ProTab",
+    "version": "1.0",
+    "description": "Minimalist Productivity Tab",
+    "icons": {
+        "48": "icons/icon48.png",
+        "96": "icons/icon96.png",
+        "128": "icons/icon128.png"
+    },
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "permissions": [
+        "storage",
+        "notifications",
+        "alarms"
+    ],
+    "host_permissions": [
+        "https://meowfacts.herokuapp.com/*"
+    ],
+    "web_accessible_resources": [{
+        "resources": ["icons/icon.png"],
+        "matches": ["<all_urls>"]
+    }],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "protab@thebotsite.com" 
+        }
+    }
+}
