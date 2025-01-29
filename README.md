@@ -38,16 +38,11 @@ Enhance your browser's new tab page with **ProTab** – a feature-rich productiv
 
 ## 🛠️ Installation
 
-```bash
-# Clone repository
-git clone https://github.com/yourusername/protab.git
+ 🦊 FireFox Users, get the extension here: https://addons.mozilla.org/en-US/firefox/addon/purrfectprotab/
+ 🌟 Chromium Based Users and Safari Users can download the source code and load the extension temporarily. 
 
-# Install live server (if needed)
-npm install -g live-server
+ The extension is submitted for review in Chrome Web Store. Link will be updated here once checks have passed.
 
-# Run locally
-live-server --port=3000
-```
 ---
 
 ## 🌐 Browser Support
