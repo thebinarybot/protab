@@ -46,7 +46,7 @@ git clone https://github.com/yourusername/protab.git
 npm install -g live-server
 
 # Run locally
-live-server --port=3000
+live-server --port=3000```
 
 ---
 
