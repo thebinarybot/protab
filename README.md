@@ -1,6 +1,9 @@
-# ProTab - Smart New Tab Productivity Suite 🚀
+# ProTab - Purrfect Productivity New Tab 🚀
 
 ![ProTab](images/SS1.png)
+
+---
+
 ![Protab](images/SS2.png)
 
 Enhance your browser's new tab page with **ProTab** – a feature-rich productivity dashboard combining task management, time tracking, and cat facts.
@@ -44,3 +47,31 @@ npm install -g live-server
 
 # Run locally
 live-server --port=3000
+
+---
+
+## 🌐 Browser Support
+
+| Feature               | Chrome      | Firefox     | Safari      |
+|-----------------------|-------------|-------------|-------------|
+| Web Audio API         | ✔️ 89+      | ✔️ 76+      | ✔️ 14+      |
+| Notifications API     | ✔️ 20+      | ✔️ 22+      | ✔️ 16+      |
+| CSS Custom Properties | ✔️ 49+      | ✔️ 31+      | ✔️ 9.1+     |
+
+---
+
+## 📜 License
+
+**MIT Licensed**  
+Meow freely. 🐈  
+
+---
+
+## 🤝 Contributing
+
+**Claws-ome contributions welcome!** Please:  
+
+1. **Fork** the repository  
+2. **Create a feature branch**:  
+   ```bash
+   git checkout -b feat/amazing-feature
