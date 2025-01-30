@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const display = document.querySelector('.timer-display');
     const startButton = document.getElementById('start-timer');
     const resetButton = document.getElementById('reset-timer');
+    const pomoTaskButton = document.getElementById('pomo-task'); 
+    const pomoBreakButton = document.getElementById('pomo-break');
     const audioContext = new(window.AudioContext || window.webkitAudioContext)();
     const themeToggle = document.getElementById('theme-toggle');
 
@@ -174,9 +176,31 @@ document.addEventListener('DOMContentLoaded', () => {
         isLightMode = !isLightMode;
         updateTheme();
     });
+
+    function setPomoTime(minutes) {
+        timeLeft = minutes * 60; 
+        updateDisplay(timeLeft);  
+
+        clearInterval(timer);
+        timer = setInterval(() => {
+            timeLeft--;
+            updateDisplay(timeLeft);
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                showNotification();
+                resetTimerState();
+            }
+        }, 1000);
+        startButton.textContent = 'Pause';
+        startButton.removeEventListener('click', startTimer);
+        startButton.addEventListener('click', pauseTimer);
+    }
     
     // Initial setup
-    startButton.addEventListener('click', startTimer); // Critical fix
+    startButton.addEventListener('click', startTimer); 
+    pomoTaskButton.addEventListener('click', () => setPomoTime(25));
+    pomoBreakButton.addEventListener('click', () => setPomoTime(5));
+
     renderItems();
     updateDisplay(0);
     fetchQuote();

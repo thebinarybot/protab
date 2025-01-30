@@ -227,6 +227,40 @@ button:hover {
     color: #666;
 }
 
+#pomo-task, #pomo-break {
+    background: #333;
+    transition: background-color 0.3s ease;
+}
+
+#pomo-task:hover {
+    background-color: #FFA50040;
+}
+
+#pomo-break {
+    background: #333;
+    transition: background-color 0.3s ease;
+}
+
+#pomo-break:hover {
+    background-color: #90EE9040;
+}
+
+.light-mode #pomo-task {
+    background-color: #666;
+}
+
+.light-mode #pomo-task:hover {
+    background-color: #FFA50040;
+}
+
+.light-mode #pomo-break {
+    background-color: #666;
+}
+
+.light-mode #pomo-break:hover {
+    background-color: #90EE9040;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
