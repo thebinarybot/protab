@@ -1,6 +1,10 @@
 # ProTab - Purrfect Productivity New Tab 🚀
 
-![ProTab](demo/protabv1.0_demo.mp4)
+![ProTab](images/SS1.png)
+
+---
+
+![Protab](images/SS2.png)
 
 Enhance your browser's new tab page with **ProTab** – a feature-rich productivity dashboard combining task management, time tracking, and cat facts.
 
