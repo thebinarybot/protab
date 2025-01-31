@@ -24,25 +24,52 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('protab-items', JSON.stringify(items));
     }
 
-    function createItemElement(text, checked) {
-        const div = document.createElement('div');
-        div.className = 'checklist-item';
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.checked = checked;
-        const span = document.createElement('span');
-        span.textContent = text;
-        if (checked) span.classList.add('checked');
-        checkbox.addEventListener('change', function() {
-            span.classList.toggle('checked', this.checked);
-            const index = Array.from(container.children).indexOf(div);
-            items[index].checked = this.checked;
+function createItemElement(text, checked) {
+    const div = document.createElement('div');
+    div.className = 'checklist-item';
+    
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = checked;
+    
+    const span = document.createElement('span');
+    span.textContent = text;
+    span.setAttribute('contenteditable', 'true'); 
+    
+    if (checked) span.classList.add('checked');
+    
+    span.addEventListener('blur', function() {
+        const newText = this.textContent.trim();
+        const index = Array.from(container.children).indexOf(div);
+        
+        if (newText && index !== -1) {
+            items[index].text = newText;
             saveItems();
-        });
-        div.appendChild(checkbox);
-        div.appendChild(span);
-        return div;
-    }
+        } else if (!newText) {
+            items.splice(index, 1);
+            div.remove();
+            saveItems();
+        }
+    });
+    
+    span.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            span.blur();
+        }
+    });
+
+    checkbox.addEventListener('change', function() {
+        span.classList.toggle('checked', this.checked);
+        const index = Array.from(container.children).indexOf(div);
+        items[index].checked = this.checked;
+        saveItems();
+    });
+
+    div.appendChild(checkbox);
+    div.appendChild(span);
+    return div;
+}
 
     function renderItems() {
         container.innerHTML = '';

@@ -264,6 +264,23 @@ button:hover {
     background-color: #90EE9040;
 }
 
+.checklist-item span[contenteditable="true"] {
+    outline: none;
+    cursor: text;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.checklist-item span[contenteditable="true"]:focus {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.light-mode .checklist-item span[contenteditable="true"]:focus {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
     .main-container {
         grid-template-columns: 1fr;
