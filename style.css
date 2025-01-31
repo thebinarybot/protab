@@ -55,6 +55,7 @@ body {
 .checklist-item input {
     margin-right: 10px;
     cursor: pointer;
+    transform: scale(1.3);
 }
 
 .checklist-item span {
@@ -110,6 +111,7 @@ body {
     font-family: 'Courier New', monospace;
     font-size: 1.4em;
     transition: all 0.3s;
+    min-width: 40px;
 }
 
 .time-input-group input:focus {
@@ -144,6 +146,7 @@ button {
     transition: all 0.3s;
     font-family: 'Courier New', monospace;
     white-space: nowrap;
+    min-height: 40px;
 }
 
 button:hover {
@@ -259,6 +262,93 @@ button:hover {
 
 .light-mode #pomo-break:hover {
     background-color: #90EE9040;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    #container {
+        padding-right: 0;
+        max-width: 100%;
+        justify-self: center;
+    }
+
+    #timer-container {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid #333;
+        padding-top: 40px;
+        max-width: 100%;
+    }
+
+    .timer-display {
+        font-size: 2em;
+    }
+
+    .time-inputs-row {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .time-input-group input {
+        width: 50px;
+        font-size: 1.2em;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px 20px;
+    }
+
+    #new-item {
+        font-size: 1em;
+    }
+
+    #quote-container {
+        position: static;
+        transform: none;
+        margin-top: 40px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .light-mode #timer-container {
+        border-top-color: #ccc;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .timer-display {
+        font-size: 1.5em;
+        letter-spacing: 2px;
+    }
+
+    .time-input-group input {
+        width: 40px;
+        font-size: 1em;
+    }
+
+    .time-separator {
+        font-size: 1.5em;
+    }
+
+    #theme-toggle {
+        top: 10px;
+        right: 10px;
+    }
 }
 
 input[type="number"]::-webkit-outer-spin-button,
