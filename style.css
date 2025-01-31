@@ -281,6 +281,32 @@ button:hover {
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
+.delete-btn {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 8px !important;
+    margin-left: auto;
+    opacity: 0.7;
+    transition: all 0.2s;
+    font-size: 0.9em;
+    outline: none !important; 
+}
+
+.delete-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    background: transparent !important; 
+    box-shadow: none !important; 
+}
+
+.light-mode .delete-btn:hover {
+    background: transparent !important; 
+}
+
+.checklist-item {
+    gap: 10px;
+}
+
 @media (max-width: 768px) {
     .main-container {
         grid-template-columns: 1fr;
