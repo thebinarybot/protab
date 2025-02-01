@@ -264,6 +264,13 @@ button:hover {
     background-color: #4fba4fe6;
 }
 
+.light-mode #delete-checked:hover,
+.light-mode #start-timer:hover,
+.light-mode #reset-timer:hover {
+    background: #555 !important;
+    color: #fff !important;
+}
+
 .checklist-item span[contenteditable="true"] {
     outline: none;
     cursor: text;
@@ -392,13 +399,6 @@ button:hover {
         top: 10px;
         right: 10px;
     }
-}
-
-.light-mode #delete-checked:hover,
-.light-mode #start-timer:hover,
-.light-mode #reset-timer:hover {
-    background: #555 !important;
-    color: #fff !important;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
