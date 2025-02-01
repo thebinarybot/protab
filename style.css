@@ -253,7 +253,7 @@ button:hover {
 }
 
 .light-mode #pomo-task:hover {
-    background-color: #FFA50040;
+    background-color: #ce9d41;
 }
 
 .light-mode #pomo-break {
@@ -261,7 +261,7 @@ button:hover {
 }
 
 .light-mode #pomo-break:hover {
-    background-color: #90EE9040;
+    background-color: #4fba4fe6;
 }
 
 .checklist-item span[contenteditable="true"] {
@@ -392,6 +392,13 @@ button:hover {
         top: 10px;
         right: 10px;
     }
+}
+
+.light-mode #delete-checked:hover,
+.light-mode #start-timer:hover,
+.light-mode #reset-timer:hover {
+    background: #555 !important;
+    color: #fff !important;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
