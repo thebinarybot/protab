@@ -10,38 +10,17 @@ Enhance your browser's new tab page with **ProTab** – a feature-rich productiv
 
 ## ✨ Features
 
-### ProTab v1.0
-
-#### 📌 Interactive Checklist System
-- **CRUD Tasks** - Add/remove items with Enter key, persist to `localStorage`
-- **Bulk Action** - One-click removal of completed tasks
-- **Visual Feedback** - Strike-through animation for checked items
-
-#### ⏲️ Precision Timer with Web Audio
-- **Flexible Input** - Set durations in hours/minutes/seconds
-- **Audible Alerts** - Web Audio API-powered alarm (configurable oscillator)
-- **Notification Support** - Browser notifications + fallback alerts
-
-#### 🎨 Theme Engine
-- **Dark/Light Modes** - Toggle with session persistence
-- **CSS Variables** - Easy visual customization via `:root` properties
-
-#### 🐾 Feline Productivity Boosters
-- **Cat Fact API** - Randomized cat wisdom from [meowfacts.herokuapp.com](https://meowfacts.herokuapp.com/)
-- **Purr-sistent Storage** - `localStorage` integration for checklist and theme
-
-#### 🔧 Tech Stack
-- Vanilla JavaScript (ES6+)
-- Web Audio API for sound notifications
-- Modern CSS (Flexbox, Grid, Custom Properties)
-- REST API integration
-
-### ProTab v1.1
-
-#### 🍅 Pomodoro Timer
-- **Dedicated Modes** - PomoTask (25 minutes) and PomoBreak (5 minutes) presets
-- **Automated Start** - One-click activation of Pomodoro cycles
-- **Seamless Integration** - Works alongside standard timer functionality
+✅ Interactive Checklist: Add, remove, and manage tasks.
+🗑️ Bulk Delete: Clear all completed tasks at once.
+👀 Visual Cues: Strike-through animation for completed items.
+🍅 Pomodoro Timer: Dedicated PomoTask (25 min) and PomoBreak (5 min) modes.
+⏱️ Precision Timer: Set durations in hours, minutes, and seconds.
+🔊 Audible Alerts: Web Audio API-powered alarm with configurable oscillator.
+🔔 Notifications: Browser notifications with fallback alerts.
+🌓 Theme Toggle: Switch between dark and light modes.
+🎨 Customizable Themes: Easy visual adjustments via CSS variables.
+😻 Cat Facts: Random cat wisdom from meowfacts.herokuapp.com.
+🐾 Purr-sistent Data: Local storage for checklist and theme settings.
 
 ---
 
