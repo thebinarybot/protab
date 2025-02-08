@@ -11,15 +11,25 @@ Enhance your browser's new tab page with **ProTab** – a feature-rich productiv
 ## ✨ Features
 
 ✅ Interactive Checklist: Add, remove, and manage tasks.
+
 🗑️ Bulk Delete: Clear all completed tasks at once.
+
 👀 Visual Cues: Strike-through animation for completed items.
+
 🍅 Pomodoro Timer: Dedicated PomoTask (25 min) and PomoBreak (5 min) modes.
+
 ⏱️ Precision Timer: Set durations in hours, minutes, and seconds.
+
 🔊 Audible Alerts: Web Audio API-powered alarm with configurable oscillator.
+
 🔔 Notifications: Browser notifications with fallback alerts.
+
 🌓 Theme Toggle: Switch between dark and light modes.
+
 🎨 Customizable Themes: Easy visual adjustments via CSS variables.
+
 😻 Cat Facts: Random cat wisdom from meowfacts.herokuapp.com.
+
 🐾 Purr-sistent Data: Local storage for checklist and theme settings.
 
 ---
