@@ -32,6 +32,8 @@ Enhance your browser's new tab page with **ProTab** – a feature-rich productiv
 
 🐾 Purr-sistent Data: Local storage for checklist and theme settings.
 
+🔖 Website Bookmark: 5 website bookmark cards for easy access.
+
 ---
 
 ## 🛠️ Installation
