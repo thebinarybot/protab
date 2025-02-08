@@ -5,9 +5,10 @@ body {
     margin: 0;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     padding: 20px;
+    padding-top: 260px;
 }
 
 .main-container {
@@ -15,6 +16,7 @@ body {
     grid-template-columns: 1fr 1fr;
     width: 100%;
     max-width: 1200px;
+    margin-top: 40px;
 }
 
 #container {
@@ -314,6 +316,84 @@ button:hover {
     gap: 10px;
 }
 
+/* Bookmarks */
+.bookmarks-grid {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    max-width: 100%;
+}
+
+.bookmark-card {
+    position: relative;
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+    min-width: 100px;
+    max-width: 140px;
+    word-break: break-all;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+}
+
+.bookmark-card:hover {
+    background: #444;
+    transform: translateY(-2px);
+}
+
+.bookmark-card.add-new {
+    background: #444;
+    border: 2px dashed #666;
+}
+
+.bookmark-card.add-new:hover {
+    background: #555;
+    border-color: #777;
+}
+
+.bookmark-delete {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.bookmark-delete:hover {
+    opacity: 1;
+    color: #ff4444;
+}
+
+.light-mode .bookmark-card {
+    background: #666;
+    color: #fff;
+}
+
+.light-mode .bookmark-card.add-new {
+    background: #e0e0e0;
+    border-color: #999;
+    color: #333;
+}
+
 @media (max-width: 768px) {
     .main-container {
         grid-template-columns: 1fr;
@@ -371,6 +451,26 @@ button:hover {
         padding: 0 20px;
     }
 
+    body {
+        padding-top: 140px;
+    }
+    
+    .bookmarks-grid {
+        top: 80px;
+        width: 95%;
+    }
+    
+    .main-container {
+        margin-top: 20px;
+    }
+    
+    .bookmark-card {
+        min-width: 80px;
+        max-width: 100px;
+        padding: 8px 10px;
+        font-size: 0.8em;
+    }
+
     .light-mode #timer-container {
         border-top-color: #ccc;
     }
@@ -379,6 +479,7 @@ button:hover {
 @media (max-width: 480px) {
     body {
         padding: 10px;
+        padding-top: 110px;
     }
 
     .timer-display {
@@ -398,6 +499,19 @@ button:hover {
     #theme-toggle {
         top: 10px;
         right: 10px;
+    }
+
+    .bookmarks-grid {
+        top: 70px;
+        gap: 8px;
+    }
+    
+    .bookmark-card {
+        min-width: 70px;
+        max-width: 80px;
+        min-height: 40px;
+        padding: 6px 8px;
+        font-size: 0.7em;
     }
 }
 

@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeLeft = 0;
     let alarmOscillator = null;
     let isLightMode = localStorage.getItem('protab-theme') === 'light';
+    let bookmarks = JSON.parse(localStorage.getItem('protab-bookmarks') || '[]');
 
     // Checklist functionality
     function saveItems() {
@@ -234,6 +235,71 @@ document.addEventListener('DOMContentLoaded', () => {
         startButton.addEventListener('click', pauseTimer);
     }
     
+    function createBookmarkCard(url) {
+        const card = document.createElement('div');
+        card.className = 'bookmark-card';
+        
+        try {
+            const urlObj = new URL(url);
+            card.textContent = urlObj.hostname;
+            card.title = url;
+        } catch {
+            card.textContent = 'Invalid URL';
+        }
+    
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'bookmark-delete';
+        deleteBtn.innerHTML = '×';
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const index = Array.from(card.parentElement.children).indexOf(card) - 1;
+            bookmarks.splice(index, 1);
+            localStorage.setItem('protab-bookmarks', JSON.stringify(bookmarks));
+            renderBookmarks();
+        });
+    
+        card.appendChild(deleteBtn);
+        card.addEventListener('click', (e) => {
+            if (e.target === deleteBtn) return;
+            try {
+                window.location.href = url;
+            } catch {
+                alert('Could not open URL');
+            }
+        });
+    
+        return card;
+    }
+    
+    function renderBookmarks() {
+        const container = document.getElementById('bookmarks-container');
+        container.innerHTML = '';
+    
+        bookmarks.slice(0, 5).forEach(url => {
+            container.appendChild(createBookmarkCard(url));
+        });
+    
+        if (bookmarks.length < 5) {
+            const addCard = document.createElement('div');
+            addCard.className = 'bookmark-card add-new';
+            addCard.textContent = '+';
+            addCard.addEventListener('click', () => {
+                const url = prompt('Enter website URL (include http:// or https://):');
+                if (url) {
+                    try {
+                        new URL(url);
+                        bookmarks.push(url);
+                        localStorage.setItem('protab-bookmarks', JSON.stringify(bookmarks));
+                        renderBookmarks();
+                    } catch {
+                        alert('Please enter a valid URL');
+                    }
+                }
+            });
+            container.appendChild(addCard);
+        }
+    }
+
     // Initial setup
     startButton.addEventListener('click', startTimer); 
     pomoTaskButton.addEventListener('click', () => setPomoTime(25));
@@ -243,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDisplay(0);
     fetchQuote();
     updateTheme();
+    renderBookmarks();
 });
 
 // Notification permission
