@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ProTab ✅</title>
   <link rel="stylesheet" href="style.css">
@@ -26,24 +27,26 @@
       </div>
     </div>
     <div id="timer-container">
-      <div class="button-group" style="margin-bottom: 40px;">  <button id="pomo-task" class="timer-button">PomoTask (25M)</button>
+      <div class="button-group" style="margin-bottom: 40px;">
+        <button id="pomo-task" class="timer-button">PomoTask (25M)</button>
         <button id="pomo-break" class="timer-button">PomoBreak (5M)</button>
       </div>
-      <div class="timer-display" style="margin-bottom: 0px;">00:00:00</div>  <div class="timer-controls">
+      <div class="timer-display" style="margin-bottom: 0px;">00:00:00</div>
+      <div class="timer-controls">
         <div class="time-inputs-row">
           <div class="time-input-group">
             <input type="number" value="" max="23" id="hours">
-            <label>HH</label>
+            <label for="hours">HH</label>
           </div>
           <span class="time-separator">:</span>
           <div class="time-input-group">
             <input type="number" value="" max="59" id="minutes">
-            <label>MM</label>
+            <label for="minutes">MM</label>
           </div>
           <span class="time-separator">:</span>
           <div class="time-input-group">
             <input type="number" value="" max="59" id="seconds">
-            <label>SS</label>
+            <label for="seconds">SS</label>
           </div>
         </div>
         <div class="button-group">
@@ -53,7 +56,7 @@
       </div>
     </div>
   </div>
-  <button id="theme-toggle" style="position: fixed; top: 20px; right: 20px;">☀️</button>
+  <button id="theme-toggle" aria-label="Toggle theme">☀️</button>
   <div id="quote-container"></div>
   <script src="app.js"></script>
 </body>

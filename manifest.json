@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "ProTab",
-    "version": "1.2.1",
+    "version": "2.0",
     "description": "Minimalist Productivity Tab",
     "icons": {
         "48": "icons/icon48.png",
@@ -24,7 +24,7 @@
         "matches": ["<all_urls>"]
     }],
     "content_security_policy": {
-        "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:;"
+        "extension_pages": "script-src 'self'; object-src 'self'"
     },
     "browser_specific_settings": {
         "gecko": {
