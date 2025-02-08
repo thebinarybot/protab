@@ -414,15 +414,15 @@ button:hover {
     padding: 2px 5px;
     font-size: 10px;
     opacity: 0.7;
-    margin: 0 2px; /* Add margin for spacing */
+    margin: 0 2px; 
 }
 
 .bookmark-edit {
-    margin-left: 4px; /* Adjust this value to move left */
+    margin-left: 4px; 
 }
 
 .bookmark-delete {
-    margin-right: 4px; /* Adjust this value to move right */
+    margin-right: 4px;
 }
 
 .bookmark-edit:hover {
