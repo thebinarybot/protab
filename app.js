@@ -238,7 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function createBookmarkCard(url) {
         const card = document.createElement('div');
         card.className = 'bookmark-card';
-        
+        card.dataset.url = url; 
+    
         try {
             const urlObj = new URL(url);
             card.textContent = urlObj.hostname;
@@ -247,29 +248,58 @@ document.addEventListener('DOMContentLoaded', () => {
             card.textContent = 'Invalid URL';
         }
     
-        const deleteBtn = document.createElement('button');
-        deleteBtn.className = 'bookmark-delete';
-        deleteBtn.innerHTML = '×';
-        deleteBtn.addEventListener('click', (e) => {
+        const controls = document.createElement('div');
+        controls.className = 'bookmark-controls';
+    
+        const editBtn = document.createElement('button');
+        editBtn.className = 'bookmark-edit';
+        editBtn.innerHTML = '✏️';
+        editBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const index = Array.from(card.parentElement.children).indexOf(card) - 1;
-            bookmarks.splice(index, 1);
-            localStorage.setItem('protab-bookmarks', JSON.stringify(bookmarks));
-            renderBookmarks();
+            const newUrl = prompt('Edit website URL:', card.dataset.url);
+            if (newUrl) {
+                try {
+                    new URL(newUrl); // Validate URL
+                    const index = bookmarks.indexOf(card.dataset.url);
+                    if (index > -1) {
+                        bookmarks[index] = newUrl;
+                        localStorage.setItem('protab-bookmarks', JSON.stringify(bookmarks));
+                        renderBookmarks();
+                    }
+                } catch {
+                    alert('Please enter a valid URL');
+                }
+            }
         });
     
-        card.appendChild(deleteBtn);
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'bookmark-delete';
+        deleteBtn.innerHTML = '❌';
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const index = bookmarks.indexOf(card.dataset.url);
+            if (index > -1) {
+                bookmarks.splice(index, 1);
+                localStorage.setItem('protab-bookmarks', JSON.stringify(bookmarks));
+                renderBookmarks();
+            }
+        });
+    
+        controls.appendChild(editBtn);
+        controls.appendChild(deleteBtn);
+        card.appendChild(controls);
+    
         card.addEventListener('click', (e) => {
-            if (e.target === deleteBtn) return;
+            if (e.target.closest('.bookmark-controls')) return;
             try {
-                window.location.href = url;
+                window.location.href = card.dataset.url;
             } catch {
                 alert('Could not open URL');
             }
         });
     
         return card;
-    }
+    }    
     
     function renderBookmarks() {
         const container = document.getElementById('bookmarks-container');

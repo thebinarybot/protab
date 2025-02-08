@@ -335,19 +335,20 @@ button:hover {
     position: relative;
     background: #333;
     color: white;
-    padding: 10px 15px;
+    padding: 20px 15px;  
     border-radius: 6px;
     cursor: pointer;
     text-align: center;
     transition: all 0.3s;
-    min-width: 100px;
-    max-width: 140px;
+    min-width: 120px;    
+    max-width: 160px;    
     word-break: break-all;
-    min-height: 50px;
+    min-height: 50px;   
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.9em;
+    padding-top: 20px;   
 }
 
 .bookmark-card:hover {
@@ -392,6 +393,49 @@ button:hover {
     background: #e0e0e0;
     border-color: #999;
     color: #333;
+}
+
+.bookmark-controls {
+    position: absolute;
+    top: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+}
+
+.bookmark-edit,
+.bookmark-delete {
+    position: static;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 10px;
+    opacity: 0.7;
+    margin: 0 2px; /* Add margin for spacing */
+}
+
+.bookmark-edit {
+    margin-left: 4px; /* Adjust this value to move left */
+}
+
+.bookmark-delete {
+    margin-right: 4px; /* Adjust this value to move right */
+}
+
+.bookmark-edit:hover {
+    opacity: 1;
+    color: #4CAF50;
+}
+
+.light-mode .bookmark-edit {
+    color: #333;
+}
+
+.light-mode .bookmark-edit:hover {
+    color: #2E7D32;
 }
 
 @media (max-width: 768px) {
