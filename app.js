@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let alarmOscillator = null;
     let isLightMode = localStorage.getItem('protab-theme') === 'light';
     let bookmarks = JSON.parse(localStorage.getItem('protab-bookmarks') || '[]');
+    let notes = JSON.parse(localStorage.getItem('protab-notes') || '[{"id":1,"title":"Quick Note","content":""}]');
 
     // Checklist functionality
     function saveItems() {
@@ -330,6 +331,109 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function createNoteElement(note) {
+        const card = document.createElement('div');
+        card.className = 'note-card';
+        card.dataset.id = note.id;
+        
+        const title = document.createElement('div');
+        title.textContent = note.title || 'Untitled';
+        card.appendChild(title);
+        
+        card.addEventListener('click', () => {
+            openNoteModal(note);
+        });
+        
+        return card;
+    }
+    
+    function openNoteModal(note) {
+        const modal = document.getElementById('note-modal');
+        const modalContent = document.querySelector('.modal-content');
+        const titleInput = document.getElementById('note-title');
+        const bodyInput = document.getElementById('note-body');
+        
+        // Reset modal state
+        titleInput.value = note.title || '';
+        bodyInput.value = note.content || '';
+        modal.style.display = 'flex';
+    
+        // Cleanup previous listeners
+        const cleanUp = () => {
+            modal.removeEventListener('click', handleOutsideClick);
+            saveBtn.removeEventListener('click', saveHandler);
+            deleteBtn.removeEventListener('click', deleteHandler);
+        };
+    
+        // Handle outside click
+        const handleOutsideClick = (e) => {
+            if (!modalContent.contains(e.target)) {
+                modal.style.display = 'none';
+                cleanUp();
+            }
+        };
+    
+        // Save handler
+        const saveHandler = () => {
+            note.title = titleInput.value.trim();
+            note.content = bodyInput.value.trim();
+            localStorage.setItem('protab-notes', JSON.stringify(notes));
+            renderNotes();
+            modal.style.display = 'none';
+            cleanUp();
+        };
+    
+        // Delete handler
+        const deleteHandler = () => {
+            notes = notes.filter(n => n.id !== note.id);
+            localStorage.setItem('protab-notes', JSON.stringify(notes));
+            renderNotes();
+            modal.style.display = 'none';
+            cleanUp();
+        };
+    
+        // Get fresh button references
+        const saveBtn = document.getElementById('save-note');
+        const deleteBtn = document.getElementById('delete-note');
+    
+        // Attach new listeners
+        modal.addEventListener('click', handleOutsideClick);
+        saveBtn.addEventListener('click', saveHandler);
+        deleteBtn.addEventListener('click', deleteHandler);
+    }
+    
+    function renderNotes() {
+        const container = document.getElementById('notes-container');
+        container.innerHTML = '';
+        
+        // First render all existing notes
+        notes.forEach(note => {
+            container.appendChild(createNoteElement(note));
+        });
+      
+        // Then add the "+" card if less than 5 notes
+        const addCard = document.createElement('div');
+        addCard.className = 'note-card add-new';
+        addCard.textContent = '+';
+        addCard.addEventListener('click', () => {
+            const newNote = {
+                id: Date.now(),
+                title: `Note ${notes.length + 1}`,
+                content: ''
+            };
+            notes.push(newNote);
+            localStorage.setItem('protab-notes', JSON.stringify(notes));
+            renderNotes();
+        });
+        container.appendChild(addCard);
+    }
+    
+    // Initialize notes array from localStorage without creating default note
+    if (!localStorage.getItem('protab-notes')) {
+        notes = [];
+        localStorage.setItem('protab-notes', JSON.stringify(notes));
+    }
+    
     // Initial setup
     startButton.addEventListener('click', startTimer); 
     pomoTaskButton.addEventListener('click', () => setPomoTime(25));
@@ -340,6 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchQuote();
     updateTheme();
     renderBookmarks();
+    renderNotes();
 });
 
 // Notification permission

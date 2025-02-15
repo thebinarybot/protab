@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    padding-top: 260px;
+    padding-top: 60px;
 }
 
 .main-container {
@@ -16,7 +16,9 @@ body {
     grid-template-columns: 1fr 1fr;
     width: 100%;
     max-width: 1200px;
-    margin-top: 40px;
+    margin-top: 60px;
+    margin: 100px auto; 
+    gap: 40px; 
 }
 
 #container {
@@ -318,10 +320,9 @@ button:hover {
 
 /* Bookmarks */
 .bookmarks-grid {
-    position: fixed;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;  
+    left: auto; 
+    transform: none; 
     z-index: 100;
     display: flex;
     gap: 10px;
@@ -329,6 +330,7 @@ button:hover {
     justify-content: center;
     padding: 10px;
     max-width: 100%;
+    margin: 10px auto;  
 }
 
 .bookmark-card {
@@ -496,7 +498,10 @@ button:hover {
     }
 
     body {
-        padding-top: 140px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 160px; /* Reduce top padding for bookmarks */
     }
     
     .bookmarks-grid {
@@ -558,6 +563,186 @@ button:hover {
         font-size: 0.7em;
     }
 }
+
+/* Quick Notes */
+.notes-grid {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1200px; 
+    padding: 0 20px;
+    position: static; 
+}
+  
+  .note-card {
+    background: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    min-width: 100px;
+    max-width: 120px;
+    word-break: break-word;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8em;
+    transition: all 0.3s;
+    position: relative;
+  }
+  
+  .note-card:hover {
+    background: #444;
+    transform: translateY(-2px);
+  }
+  
+  .note-card.add-new {
+    background: #444;
+    border: 2px dashed #666;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+  }
+  
+  .modal-content {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    min-height: 300px;
+    margin: auto;
+    resize: both;
+    overflow: auto;
+    min-width: 300px;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    pointer-events: auto;
+  }
+  
+  
+  #note-title {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #666;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 10px 0;
+    font-family: 'Courier New', monospace;  
+    outline: none;  
+}
+
+#note-body {
+    background: transparent;
+    border: 1px solid #666;
+    color: #fff;
+    flex: 1;
+    padding: 10px;
+    resize: none;
+    outline: none;  
+    font-family: 'Courier New', monospace; 
+}
+  
+  .note-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  
+  #save-note {
+    background: #4CAF50;
+    padding: 8px 20px;
+  }
+  
+  #delete-note {
+    background: #ff4444;
+    padding: 8px 20px;
+  }
+  
+  /* Light Mode */
+  .light-mode .modal-content {
+    background: #fff;
+    border: 1px solid #ccc;
+    }
+  
+  .light-mode .note-card {
+    background: #666;  
+    color: #fff;     
+    }
+
+    .light-mode .note-card:hover {
+        background: #777;
+    }
+
+    .light-mode .note-card.add-new {
+    background: #e0e0e0;
+    border-color: #999;
+    color: #333;
+    }
+
+  .light-mode #note-title,
+  .light-mode #note-body {
+    color: #333;
+    border-color: #ccc;
+  }
+  
+  .light-mode #note-title {
+    border-bottom-color: #ddd;
+  }
+  
+  .light-mode #delete-note {
+    background: #cc0000;
+  }
+  
+  .light-mode #save-note {
+    background: #2E7D32;
+  }
+  
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 95%;
+      min-width: unset;
+      max-width: 95%;
+      margin: 10px auto;
+      resize: none;
+    }
+    
+    #note-body {
+      min-height: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modal-content {
+      width: 95%;
+      padding: 15px;
+    }
+    
+    #note-body {
+      min-height: 150px;
+    }
+  }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
