@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'bookmark-card';
         card.dataset.url = url; 
+        card.dataset.tooltip = 'Click to visit website';
     
         try {
             const urlObj = new URL(url);
@@ -314,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const addCard = document.createElement('div');
             addCard.className = 'bookmark-card add-new';
             addCard.textContent = '+';
+            addCard.dataset.tooltip = 'Add Website Bookmark'; 
             addCard.addEventListener('click', () => {
                 const url = prompt('Enter website URL (include http:// or https://):');
                 if (url) {
@@ -335,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'note-card';
         card.dataset.id = note.id;
+        card.dataset.tooltip = 'Click to edit note';
         
         const title = document.createElement('div');
         title.textContent = note.title || 'Untitled';
@@ -415,6 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const addCard = document.createElement('div');
         addCard.className = 'note-card add-new';
         addCard.textContent = '+';
+        addCard.dataset.tooltip = 'Add New Note';
         addCard.addEventListener('click', () => {
             const newNote = {
                 id: Date.now(),
@@ -445,6 +449,42 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTheme();
     renderBookmarks();
     renderNotes();
+
+    // v 5.0: Delete Notes and Bookmarks Button
+    
+    // Create and add delete buttons
+    const deleteNotesBtn = document.createElement('button');
+    deleteNotesBtn.id = 'delete-notes-btn';
+    deleteNotesBtn.className = 'control-button';
+    deleteNotesBtn.innerHTML = '📝';
+    deleteNotesBtn.setAttribute('data-tooltip', 'Delete all notes');
+
+    const deleteBookmarksBtn = document.createElement('button');
+    deleteBookmarksBtn.id = 'delete-bookmarks-btn';
+    deleteBookmarksBtn.className = 'control-button';
+    deleteBookmarksBtn.innerHTML = '🔖';
+    deleteBookmarksBtn.setAttribute('data-tooltip', 'Delete all bookmarks');
+
+    document.body.appendChild(deleteNotesBtn);
+    document.body.appendChild(deleteBookmarksBtn);
+
+    // Add event listeners for delete buttons
+    deleteNotesBtn.addEventListener('click', () => {
+        if (confirm('This will delete all the notes. Would you like to proceed?')) {
+            notes = [];
+            localStorage.setItem('protab-notes', JSON.stringify(notes));
+            renderNotes();
+        }
+    });
+
+    deleteBookmarksBtn.addEventListener('click', () => {
+        if (confirm('This will delete all the bookmarks. Would you like to proceed?')) {
+            bookmarks = [];
+            localStorage.setItem('protab-bookmarks', JSON.stringify(bookmarks));
+            renderBookmarks();
+        }
+    });
+
 });
 
 // Notification permission

@@ -744,6 +744,165 @@ button:hover {
     }
   }
 
+/* Tooltip container */
+[data-tooltip] {
+    position: relative;
+}
+
+/* Tooltip text */
+[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    padding: 6px 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 1000;
+    pointer-events: none;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Special handling for theme toggle button */
+
+#theme-toggle[data-tooltip]::before {
+    right: calc(100% + 10px);
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    white-space: nowrap;
+}
+
+/* Show tooltip on hover */
+[data-tooltip]:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Light mode styles */
+.light-mode [data-tooltip]::before {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    [data-tooltip]::before {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+}
+
+/* Ensure tooltips stay within viewport */
+[data-tooltip] {
+    overflow: visible;
+}
+
+/* Handle tooltip positioning when near screen edges */
+@media (max-width: 480px) {
+    #theme-toggle[data-tooltip]::before {
+        right: 0;
+        white-space: normal;
+        max-width: 150px;
+        text-align: right;
+    }
+}
+
+/* v5.0 Delete Buttons */
+
+/* Control Buttons (Theme Toggle, Delete Notes, Delete Bookmarks) */
+.control-button {
+    position: fixed;
+    right: 20px;
+    background: transparent !important;
+    border: none !important;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 1.2em;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    outline: none;
+}
+
+.control-button:hover {
+    transform: scale(1.1);
+    background: transparent !important;
+}
+
+/* Remove specific styling for theme toggle */
+#theme-toggle {
+    top: 20px;
+    border: none !important;
+    border-radius: 0;
+}
+
+#delete-notes-btn {
+    top: 70px;
+}
+
+#delete-bookmarks-btn {
+    top: 120px;
+}
+
+/* Consistent tooltip positioning for all control buttons */
+.control-button[data-tooltip]::before {
+    right: calc(100% + 10px);
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    white-space: nowrap;
+}
+
+/* Light mode adjustments */
+.light-mode .control-button {
+    color: #333;
+}
+
+.light-mode #theme-toggle:hover,
+.light-mode #delete-notes-btn:hover,
+.light-mode #delete-bookmarks-btn:hover {
+    background: transparent !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .control-button {
+        right: 10px;
+    }
+    
+    #theme-toggle {
+        top: 10px;
+    }
+    
+    #delete-notes-btn {
+        top: 60px;
+    }
+    
+    #delete-bookmarks-btn {
+        top: 110px;
+    }
+    
+    .control-button[data-tooltip]::before {
+        right: calc(100% + 5px);
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
