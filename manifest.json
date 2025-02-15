@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "ProTab",
-    "version": "3.0",
+    "version": "5.0",
     "description": "Minimalist Productivity Tab",
     "icons": {
         "48": "icons/icon48.png",
